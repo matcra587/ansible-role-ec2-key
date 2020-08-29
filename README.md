@@ -2,6 +2,7 @@ EC2 Key Management
 ==================
 
 ![Ansible Lint](https://github.com/matcra587/ansible-role-ec2-key/workflows/Ansible%20Lint/badge.svg)
+![Molecule Test](https://github.com/matcra587/ansible-role-ec2-key/workflows/Molecule%20Test/badge.svg)
 
 A role to manage the EC2 Keys used to connect to Linux EC2 Instances, or decrypt Windows Admin Passwords.
 
