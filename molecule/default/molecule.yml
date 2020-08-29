@@ -1,0 +1,19 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    managed: False
+    ansible_connection_options:
+      ansible_connection: local
+provisioner:
+  name: ansible
+  playbooks:
+    converge: converge.yml
+platforms:
+  - name: instance-1
+verifier:
+  name: ansible
+  playbooks:
+    verify: verify.yml

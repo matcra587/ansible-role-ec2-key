@@ -1,0 +1,6 @@
+---
+# defaults file for ansible-role-ec2-key
+overwrite_key: false
+public_key: ~/.ssh/id_rsa.pub
+aws_region: eu-west-1
+remove_key: false

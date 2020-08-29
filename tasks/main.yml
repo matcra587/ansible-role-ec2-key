@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-ec2-key
+- name: Create EC2 Key(s) within Account
+  ec2_key:
+    aws_access_key: "{{ aws_access_key | default(omit) }}"
+    aws_secret_key: "{{ aws_secret_key | default(omit) }}"
+    force: "{{ 'yes' if overwrite_key else 'no' }}"
+    key_material: "{{ item }}"
+    name: "{{ key_name | mandatory }}"
+    region: "{{ aws_region | mandatory }}"
+    security_token: "{{ aws_security_token | default(omit) }}"
+    state: "present"
+  with_file: '{{ public_key }}'
+  when: not remove_key | bool
+
+- name: Delete EC2 Key(s) within Account
+  ec2_key:
+    aws_access_key: "{{ aws_access_key | default(omit) }}"
+    aws_secret_key: "{{ aws_secret_key | default(omit) }}"
+    name: "{{ key_name | mandatory }}"
+    region: "{{ aws_region | mandatory }}"
+    security_token: "{{ aws_security_token | default(omit) }}"
+    state: "absent"
+  when: remove_key | bool
