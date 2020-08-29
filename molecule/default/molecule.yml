@@ -10,7 +10,9 @@ driver:
 provisioner:
   name: ansible
   playbooks:
+    prepare: prepare.yml
     converge: converge.yml
+    cleanup: cleanup.yml
 platforms:
   - name: instance-1
 verifier:

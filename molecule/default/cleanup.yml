@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Cleanup
   hosts: localhost
   connection: local
   tasks:
@@ -8,4 +8,4 @@
         name: "ansible-role-ec2-key"
       vars:
         key_name: "GitHub Actions"
-        overwrite_key: true
+        remove_key: true

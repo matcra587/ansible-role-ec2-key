@@ -1,0 +1,19 @@
+---
+- name: Prepare
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create .ssh directory if it does not exist
+      file:
+        path: ~/.ssh/
+        state: directory
+        mode: '0700'
+    - name: Generate SSH Key Pair
+      openssh_keypair:
+        path: ~/.ssh/id_rsa
+        size: 2048
+    - name: Ensure boto and boto3 modules are installed
+      pip:
+        name:
+          - boto3
+          - botocore
